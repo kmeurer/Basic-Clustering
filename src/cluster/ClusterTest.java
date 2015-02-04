@@ -1,3 +1,4 @@
+package cluster;
 import static org.junit.Assert.*;
 
 import org.junit.Before;
@@ -8,6 +9,7 @@ public class ClusterTest {
 
 	@Before
 	public void setUp() throws Exception {
+		
 	}
 
 	@Test
