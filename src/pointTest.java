@@ -4,23 +4,24 @@ import org.junit.Before;
 import org.junit.Test;
 
 
-public class pointTest {
+public class PointTest {
 	// declare a testPoint variable for testing
-	point testPoint;
+	Point testPoint;
 	
+	// instantiate test point for each test
 	@Before
 	public void setUp() {
 		// Declare a point to test our point class
-		testPoint = new point(1, 3);
+		testPoint = new Point(1, 3);
 	}
 	
 	// test constructors
 	@Test
 	public void constructorTest(){
 		// create point at 0, 0
-		point emptyPoint = new point();
+		Point emptyPoint = new Point();
 		// create point at 2, 8
-		point specificPoint = new point(2, 8);
+		Point specificPoint = new Point(2, 8);
 		assertEquals(emptyPoint.getX(), 0, 0);
 		assertEquals(specificPoint.getY(), 8, 0);
 	}

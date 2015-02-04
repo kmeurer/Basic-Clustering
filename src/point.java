@@ -1,18 +1,19 @@
 
-public class point {
+public class Point {
 	/* CLASS PROPERTIES */
 	private int x; // x-value
 	private int y; // y-value
 	
 	/* CONSTRUCTORS */
 	// default constructor sets point to (0, 0)
-	public point() {
+	public Point() {
 		x = 0;
 		y = 0;
 	}
 	
 	// common constructor takes an x and a y value
-	public point(int xVal, int yVal){
+	public Point(int xVal, int yVal){
+		// set x and y values
 		x = xVal;
 		y = yVal;
 	}
