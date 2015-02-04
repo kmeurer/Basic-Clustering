@@ -1,6 +1,6 @@
 // IMPORTS
-import cluster.*;
-import point.*;
+import cluster.Cluster;
+import point.Point;
 
 // MAIN CLASS
 public class Main {
