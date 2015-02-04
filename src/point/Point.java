@@ -48,5 +48,12 @@ public class Point {
 		return y; // return new value
 	}
 	
+	// isEqual: boolean function that returns true if two points have equal values
+	public boolean isEqual(Point testPoint){
+		if( testPoint.getX() == x && testPoint.getY() == y ){
+			return true;
+		}
+		return false;
+	}
 
 }

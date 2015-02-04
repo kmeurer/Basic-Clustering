@@ -42,12 +42,35 @@ public class PointTest {
 		assertArrayEquals(testPoint.getCoords(), testCoords);
 	}
 
-	// test all setter functions
+	// test setter functions
 	@Test
 	public void settersTest(){
 		// it should return the value that it is set to
 		assertEquals(testPoint.setY(5), 5, 0);
 		// it should save changes to coordinate values
 		assertEquals(testPoint.getY(), 5, 0);
+		// it should return the value that it is set to
+		assertEquals(testPoint.setX(7), 7, 0);
+		// it should save changes to coordinate values
+		assertEquals(testPoint.getX(), 7, 0);
 	}
+	
+	// is Equal tests: tests whether the point is equal function works (Note: test of values are equal, not refs)
+	@Test
+	public void isEqualTest(){
+		// test point is (1, 3)
+		// Test with unequal points
+		Point unequalPoint1 = new Point(1, 4); // diff y val
+		assertFalse(testPoint.isEqual(unequalPoint1));
+		Point unequalPoint2 = new Point(2, 3); // diff x val
+		assertFalse(testPoint.isEqual(unequalPoint2));
+		Point unequalPoint3 = new Point(2, 9); // diff both vals
+		assertFalse(testPoint.isEqual(unequalPoint3));
+		
+		// Test with equal points
+		Point equalPoint = new Point(1, 3);
+		assertTrue(testPoint.isEqual(equalPoint));
+	}
+	
+	
 }
