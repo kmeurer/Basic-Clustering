@@ -8,10 +8,8 @@ import java.util.ArrayList;
 // main cluster class.  Used to store all data for instantiated clusters
 public class Cluster {
 	/* PROPERTIES */
-	// Used to store centroid
-	Point centroid;
-	// ArrayList to store points
-	ArrayList<Point> clusterPoints;
+	Point centroid; 					//Used to store centroid
+	ArrayList<Point> clusterPoints; 	// ArrayList to store points
 	
 	/* CONSTRUCTORS */
 	// default constructor
@@ -31,4 +29,17 @@ public class Cluster {
 	}
 	
 	/* METHODS */
+	// add a single point to the cluster
+	public void addPoint(Point pointToAdd){
+		// push new point to ArrayList
+		clusterPoints.add(pointToAdd);
+	}
+	
+	// add multiple points to the cluster
+	public void addPoints(ArrayList<Point> points){
+		// iterate through array list and add all points to the cluster
+		for(Point newPoint: points){
+			clusterPoints.add(newPoint);
+		}
+	}
 }
