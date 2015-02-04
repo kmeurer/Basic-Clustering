@@ -10,7 +10,7 @@ public class Cluster {
 	/* PROPERTIES */
 	// Used to store centroid
 	Point centroid;
-	
+	// ArrayList to store points
 	ArrayList<Point> clusterPoints;
 	
 	/* CONSTRUCTORS */
@@ -29,5 +29,6 @@ public class Cluster {
 		clusterPoints = new ArrayList<Point>();
 		clusterPoints.add(centroid);
 	}
-
+	
+	/* METHODS */
 }
