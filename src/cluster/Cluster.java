@@ -29,6 +29,11 @@ public class Cluster {
 	}
 	
 	/* METHODS */
+	// Getter for centroid
+	public Point getCentroid(){
+		return centroid;
+	}
+	
 	// add a single point to the cluster
 	public void addPoint(Point pointToAdd){
 		// push new point to ArrayList
