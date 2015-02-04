@@ -20,6 +20,11 @@ public class Point {
 	}
 	
 	/* CLASS METHODS */
+	// Print coord
+	public String print(){
+		return "(" + x + ", " + y + ")";
+	}
+	
 	// getter for x
 	public int getX(){
 		return x;

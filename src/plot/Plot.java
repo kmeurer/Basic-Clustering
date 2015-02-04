@@ -15,5 +15,13 @@ public class Plot {
 	public Plot(ArrayList<Point> coords) {
 		coordinates = coords;
 	}
+	
+	public String print(){
+		String printStmt = "Plot of " + coordinates.size() + "coordinates. \n ";
+		for(Point coord: coordinates){
+			printStmt += coord.print() + "\n";
+		}
+		return printStmt;
+	}
 
 }
