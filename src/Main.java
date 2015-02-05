@@ -1,6 +1,7 @@
 // IMPORTS
 import cluster.Cluster;
 import point.Point;
+import plot.Plot;
 
 // MAIN CLASS
 public class Main {

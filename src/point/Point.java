@@ -21,7 +21,7 @@ public class Point {
 	
 	/* CLASS METHODS */
 	// Print coord
-	public String print(){
+	public String getPointAsString(){
 		return "(" + x + ", " + y + ")";
 	}
 	
@@ -59,6 +59,11 @@ public class Point {
 			return true;
 		}
 		return false;
+	}
+	
+	// distanceFrom: returns a double of the distance between two integers
+	public double distanceFrom(Point point2){
+		return 5;
 	}
 
 }
