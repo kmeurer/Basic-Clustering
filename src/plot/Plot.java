@@ -2,6 +2,7 @@ package plot;
 
 //import Point class
 import point.Point;
+
 import java.util.ArrayList;
 
 public class Plot {
@@ -10,22 +11,26 @@ public class Plot {
 	
 	public Plot() {
 		coordinates = new ArrayList<Point>();
+		processor = new PlotProcessor(this);
 	}
 	
 	public Plot(ArrayList<Point> coords) {
 		coordinates = coords;
+		processor = new PlotProcessor(this);
 	}
 	
 	// Used to print an overview of our plot
-	public String getOverview(){
+	public void print(){
 		// Create a print Statement to return
-		String printStmt = "Plot of " + coordinates.size() + "coordinates.\n ";
+		System.out.println("Plot of " + coordinates.size() + " coordinates.\n ");
 		// list coordinates
 		for(Point coord: coordinates){
-			printStmt += coord.getPointAsString() + "\n";
+			coord.print();
 		}
-		// return statement to be printed
-		return printStmt;
 	}
-
+	
+	public ArrayList<Point> getCoords(){
+		return coordinates;
+	}
+	
 }

@@ -23,8 +23,8 @@ public class Point {
 	
 	/* CLASS METHODS */
 	// Print coord
-	public String getPointAsString(){
-		return "(" + x + ", " + y + ")";
+	public void print(){
+		System.out.println("(" + x + ", " + y + ")");
 	}
 	
 	// getter for x

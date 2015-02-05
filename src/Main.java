@@ -7,7 +7,8 @@ import plot.Plot;
 public class Main {
 
 	public static void main(String[] args){
-		
+		Plot newPlot =new Plot();
+		newPlot.print();
 	}
 
 }
