@@ -3,7 +3,7 @@ package point;
 import java.lang.Math;
 
 public class Point {
-	/* CLASS PROPERTIES */
+	/* PROPERTIES */
 	private int x; // x-value
 	private int y; // y-value
 	
