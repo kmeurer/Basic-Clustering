@@ -1,5 +1,7 @@
 package point;
 
+import java.lang.Math;
+
 public class Point {
 	/* CLASS PROPERTIES */
 	private int x; // x-value
@@ -63,7 +65,10 @@ public class Point {
 	
 	// distanceFrom: returns a double of the distance between two integers
 	public double distanceFrom(Point point2){
-		return 5;
+		// returns the result of the Euclidian distance eqn: sqrt((x1 - x2)^2 + (y1 - y2)^2)
+		double xVals = x - point2.getX();  // takes up more space but clearer
+		double yVals = y - point2.getY();
+		return Math.sqrt( Math.pow(xVals, 2) + Math.pow(yVals, 2) );
 	}
 
 }

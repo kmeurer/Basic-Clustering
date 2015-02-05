@@ -21,7 +21,7 @@ public class PointTest {
         return Arrays.asList(new Object[][] {     
                  { 0, 0, 1, 0, 1 }, 	// x1, y1, x2, y2, distance
                  { 5, 6, 8, 2, 5 }, 	// x1, y1, x2, y2, distance
-                 { 15, 8, 6, 22, 16.4 }	// x1, y1, x2, y2, distance
+                 { 15, 8, 6, 22, 16.64 }	// x1, y1, x2, y2, distance
            });
     }
     
@@ -107,8 +107,9 @@ public class PointTest {
 	@Test
 	public void distanceFromTest(){
 		// distance should be the same regardless of which point is the argument
-		assertEquals(testPoint1.distanceFrom(testPoint2), distance, 0);
-		assertEquals(testPoint2.distanceFrom(testPoint1), distance, 0);
+		System.out.println(distance);
+		assertEquals(testPoint1.distanceFrom(testPoint2), distance, .01);
+		assertEquals(testPoint2.distanceFrom(testPoint1), distance, .01);
 		// distance should be zero when compared to self
 		assertEquals(testPoint2.distanceFrom(testPoint2), 0, 0);
 		
