@@ -47,4 +47,12 @@ public class Cluster {
 			clusterPoints.add(newPoint);
 		}
 	}
+	
+	public String getCoordsAsString(){
+		String coords = "";
+		for( Point coord: clusterPoints ){
+			coords += "(" + coord.getX() + ", " + coord.getY() + ") ";
+		}
+		return coords;
+	}
 }
