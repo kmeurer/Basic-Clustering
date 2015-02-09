@@ -34,6 +34,12 @@ public class Cluster {
 		return centroid;
 	}
 	
+	// Setter for centroid
+	public Point setCentroid(Point newCentroid){
+		centroid = newCentroid;
+		return centroid;
+	}
+	
 	// add a single point to the cluster
 	public void addPoint(Point pointToAdd){
 		// push new point to ArrayList

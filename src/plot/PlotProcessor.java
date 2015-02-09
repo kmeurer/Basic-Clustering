@@ -103,11 +103,41 @@ public class PlotProcessor {
 		
 		/*
 		 * PART 3: Iterate n - 1 number of times across our clusters(stored in the clusters arraylist) to fine-tune our clusters
+		 * 			Here, we recalculate the centroid using the built in cluster function and reassign it as the centroid
 		 */
 		for(int i = 1; i < numOfIterations; i++){
+			// FOR EACH CLUSTER: Calculate mean point, assign as centroid, clear other coords
+			for(Cluster cluster: clusters){
+				Point mean = cluster.getClusterMean();	// get cluster mean
+				cluster.setCentroid(mean);				// set centroid as mean of all points
+				cluster.clearClusterPoints();			// clear cluster points
+			}
 			
+			// assign all of our coordinates to our clusters (because it is all of them, we use the coords directly from the plot)
+			assignCoordsToNearestCluster(plot.getCoords(), clusters);
+			
+			// Add to report log and print results of each iteration
+			// Add reporting to the results Log
+			String iterationNMsg = "Iteration " + (i + 1) + ":\nNew Centroids: ";
+			for(Cluster cluster: clusters){
+				iterationNMsg += cluster.getCentroid().getPointAsString() + " ";
+			}
+			iterationNMsg += "\nNew Clusters: \n";
+			for(int j = 0; j < clusters.size(); j++){
+				iterationNMsg += "\tCluster " + (j + 1) + ": " + clusters.get(j).getCoordsAsString() + "\n";
+			}
+			resultsLog.add(iterationNMsg);
+			System.out.println(iterationNMsg);
 		}
 		
+		// Add to results log
+		resultsLog.add("Clustering complete.  Beginning cluster validation using maximum intra-cluster distance.");
+		System.out.println("Clustering complete.  Beginning cluster validation using maximum intra-cluster distance.");
+		
+		/*
+		 * PART 4: Validate clusters using maximum intra-cluster distance method.  The logic for this is captured in a separate function
+		 */
+		getMaximumIntraClusterDistance(clusters);
 		
 		// RETURN CLUSTERS
 		return new ArrayList<Cluster>();
@@ -136,16 +166,11 @@ public class PlotProcessor {
 		}
 	}
 	
-	private double validateKMeansClusters(ArrayList<Cluster> clusters){
+	// Calculates and outputs the maximum intra-cluster distance for a given cluster.
+	private double getMaximumIntraClusterDistance(ArrayList<Cluster> clusters){
+		
 		return 1.0;
 	}
-	
-//	// Public function to call the create and validate
-//		public ArrayList<Cluster> calculateKMeans(int numOfClusters, int numOfIterations){
-//			ArrayList<Cluster> clusters = createKMeansClusters(numOfClusters, numOfIterations);
-//			return clusters;
-//		}
-	
 	
 	
 }

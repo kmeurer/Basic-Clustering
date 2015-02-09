@@ -34,6 +34,11 @@ public class Point {
 		System.out.println("(" + x + ", " + y + ")");
 	}
 	
+	// Get coord as String
+	public String getPointAsString(){
+		return "(" + x + ", " + y + ")";
+	}
+	
 	// getter for x
 	public double getX(){
 		return x;
