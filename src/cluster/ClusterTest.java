@@ -1,15 +1,14 @@
 package cluster;
 import static org.junit.Assert.*;
 
-import org.junit.Before;
-import org.junit.Test;
-
 import point.Point;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 
+import org.junit.Before;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
@@ -68,8 +67,8 @@ public class ClusterTest {
 		// It should set centroid to 0, 0 if none specified
 		Cluster test1 = new Cluster();
 		assertTrue(test1.getCentroid().isEqual(new Point(0, 0)));
-		
-		Point testPoint = new Point();
+		// It should set a centroid to a specified point if called in the constructor
+		Point testPoint = new Point(5, 7);
 		Cluster test2 = new Cluster(testPoint);
 		assertEquals(test2.getCentroid(), testPoint);
 	}
@@ -77,18 +76,34 @@ public class ClusterTest {
 	// Getters Test
 	@Test
 	public void gettersTests(){
+		// it should get the centroid when requested
 		assertEquals(testCluster.getCentroid(), testCentroid);
 	}
 	
 	// Setters Test
 	@Test
 	public void settersTests(){
+		// create a new point that we will set as the centroid
 		Point newCentroid = new Point(10, 15);
 		testCluster.setCentroid(newCentroid);
 		assertEquals(testCluster.getCentroid(), newCentroid);
 	}
 	
 	// Mean Test
+	@Test
+	public void meanTest(){
+		// calculate the mean of our test cluster
+		Point mean = testCluster.getClusterMean();
+		// x and y values of mean should match those specified in the parameters
+		assertEquals(mean.getX(), meanX, 0);
+		assertEquals(mean.getY(), meanY, 0);
+	}
 	
-
+	// Intra-Cluster Distance Test
+	@Test
+	public void intraClusterDistanceTest(){
+		// get intracluster distance and test to see if it matches our parameter
+		assertEquals(testCluster.getMaxIntraClusterDistance(), maxIntraDist, 0.01);
+	}
+	
 }

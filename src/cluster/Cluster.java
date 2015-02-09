@@ -40,6 +40,11 @@ public class Cluster {
 		return centroid;
 	}
 	
+	// getter for all coords
+	public ArrayList<Point> getCoords(){
+		return clusterPoints;
+	}
+	
 	// add a single point to the cluster
 	public void addPoint(Point pointToAdd){
 		// push new point to ArrayList
@@ -67,6 +72,10 @@ public class Cluster {
 		yMean /= clusterPoints.size(); // divide sum by number of elements
 		Point mean = new Point(xMean, yMean);
 		return mean;
+	}
+	
+	public double getMaxIntraClusterDistance(){
+		return 1.0;
 	}
 	
 	// Removes all points from a given cluster.  Leaves centroid the same(the defining characteristic of a centroid)
