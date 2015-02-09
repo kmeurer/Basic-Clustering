@@ -90,8 +90,35 @@ public class PlotProcessor {
 		/*
 		 *  PART 2: Add other coordinates to clusters based on minimum distance
 		 */
-		// iterate through all of our coords.  For each coord...
-		for(Point coord: coords){
+		// We call our assigning function to add the rest of our points to the clusters. We use our coords arraylist because it has removed all centroids, which are already in the list
+		assignCoordsToNearestCluster(coords, clusters);
+		
+		// Add reporting to the results Log
+		String iteration1Msg = "Iteration 1 Clusters: \n";
+		for(int i = 0; i < clusters.size(); i++){
+			iteration1Msg += "\tCluster " + (i + 1) + ": " + clusters.get(i).getCoordsAsString() + "\n";
+		}
+		resultsLog.add(iteration1Msg);
+		System.out.println(iteration1Msg);
+		
+		/*
+		 * PART 3: Iterate n - 1 number of times across our clusters(stored in the clusters arraylist) to fine-tune our clusters
+		 */
+		for(int i = 1; i < numOfIterations; i++){
+			
+		}
+		
+		
+		// RETURN CLUSTERS
+		return new ArrayList<Cluster>();
+	}
+	
+	/*
+	 *  Assign a group of points to a group of clusters based on minimum distance.  Function takes an arraylist of Coordinates and an arraylist of clusters
+	 */
+	private void assignCoordsToNearestCluster(ArrayList<Point> coordinates, ArrayList<Cluster> clusters){
+		// for every coordinate, we compare the point to the centroid of each cluster
+		for(Point coord: coordinates){
 			// tuple used to store [minDistance, indexOfClusterWithMinDistance]
 			double[] minDistance = {coord.distanceFrom(clusters.get(0).getCentroid()), 0};
 			// compare point to centroid of each Cluster, updating minDistance as needed
@@ -107,22 +134,6 @@ public class PlotProcessor {
 			// add point to the cluster with the closest centroid/minimum distance
 			clusters.get((int) minDistance[1]).addPoint(coord);
 		}
-		// Add reporting to the results Log
-		String iteration1Msg = "Iteration 1 Clusters: \n";
-		for(int i = 0; i < clusters.size(); i++){
-			iteration1Msg += "\tCluster " + (i + 1) + ": " + clusters.get(i).getCoordsAsString() + "\n";
-		}
-		resultsLog.add(iteration1Msg);
-		System.out.println(iteration1Msg);
-		
-		/*
-		 * PART 3: Iterate n number of times across our clusters(stored in the clusters arraylist) to fine-tune our clusters
-		 */
-		
-		
-		
-		// RETURN CLUSTERS
-		return new ArrayList<Cluster>();
 	}
 	
 	private double validateKMeansClusters(ArrayList<Cluster> clusters){
