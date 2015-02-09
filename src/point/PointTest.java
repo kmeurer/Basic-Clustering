@@ -19,8 +19,8 @@ public class PointTest {
 	@Parameters
     public static Collection<Object[]> getTestParameters() {
         return Arrays.asList(new Object[][] {     
-                 { 0, 0, 1, 0, 1 }, 	// x1, y1, x2, y2, distance
-                 { 5, 6, 8, 2, 5 }, 	// x1, y1, x2, y2, distance
+                 { 0, 0, 1, 0, 1 }, 		// x1, y1, x2, y2, distance
+                 { 5, 6, 8, 2, 5 }, 		// x1, y1, x2, y2, distance
                  { 15, 8, 6, 22, 16.64 }	// x1, y1, x2, y2, distance
            });
     }
