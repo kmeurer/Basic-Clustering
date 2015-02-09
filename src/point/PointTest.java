@@ -26,10 +26,10 @@ public class PointTest {
     }
     
 	// declare parameters and  testPoint variables for parameterized Testing
-	int x1;
-	int y1;
-	int x2;
-	int y2;
+	double x1;
+	double y1;
+	double x2;
+	double y2;
 	double distance;
     Point testPoint1;
 	Point testPoint2;
@@ -70,8 +70,8 @@ public class PointTest {
 		// getter for Y test
 		assertEquals(testPoint1.getY(), y1, 0);
 		// getter for both coords test
-		int[] testCoords = {x1, y1};
-		assertArrayEquals(testPoint1.getCoords(), testCoords);
+		double[] testCoords = {x1, y1};
+		assertArrayEquals(testPoint1.getCoords(), testCoords, 0);
 	}
 
 	// test setter functions

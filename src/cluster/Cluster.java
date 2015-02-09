@@ -48,6 +48,28 @@ public class Cluster {
 		}
 	}
 	
+	// Calculates the mean of all points in the cluster
+	public Point getClusterMean(){
+		double xMean = 0;  // value used to store sum of all x values and ultimately the mean of all x values
+		double yMean = 0;  // value used to store sum of all y values and ultimately the mean of all y values
+		for( Point coord: clusterPoints ){
+			// store sum of all x values and y values
+			xMean += coord.getX();
+			yMean += coord.getY();
+		}
+		xMean /= clusterPoints.size(); // divide sum by number of elements
+		yMean /= clusterPoints.size(); // divide sum by number of elements
+		Point mean = new Point(xMean, yMean);
+		return mean;
+	}
+	
+	// Removes all points from a given cluster.  Leaves centroid the same(the defining characteristic of a centroid)
+	public void clearClusterPoints(){
+		// Clear our cluster points
+		clusterPoints.clear();
+	}
+	
+	// returns all of the cluster coordinates as a string.  Used for printing.
 	public String getCoordsAsString(){
 		String coords = "";
 		for( Point coord: clusterPoints ){

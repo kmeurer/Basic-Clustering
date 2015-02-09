@@ -4,8 +4,9 @@ import java.lang.Math;
 
 public class Point {
 	/* PROPERTIES */
-	private int x; // x-value
-	private int y; // y-value
+	// You may be wondering why I decided to make these doubles.  I considered having them be ints, but we don't really know what this point class will be used for.  What if we need precision?  Then I'd be glad we used doubles
+	private double x; // x-value
+	private double y; // y-value
 	
 	/* CONSTRUCTORS */
 	// default constructor sets point to (0, 0)
@@ -21,6 +22,12 @@ public class Point {
 		y = yVal;
 	}
 	
+	public Point(double xVal, double yVal){
+		// set x and y values
+		x = xVal;
+		y = yVal;
+	}
+	
 	/* CLASS METHODS */
 	// Print coord
 	public void print(){
@@ -28,29 +35,29 @@ public class Point {
 	}
 	
 	// getter for x
-	public int getX(){
+	public double getX(){
 		return x;
 	}
 	
 	// getter for y
-	public int getY(){
+	public double getY(){
 		return y;
 	}
 	
 	// return a tuple of both coordinates [x, y]
-	public int[] getCoords(){
-		int[] coords = {x, y}; // create an array to return
+	public double[] getCoords(){
+		double[] coords = {x, y}; // create an array to return
 		return coords;
 	}
 	
 	// setter for x
-	public int setX(int newX){
+	public double setX(double newX){
 		x = newX;
 		return x; // return new value
 	}
 	
 	// setter for y
-	public int setY(int newY){
+	public double setY(double newY){
 		y = newY;
 		return y; // return new value
 	}

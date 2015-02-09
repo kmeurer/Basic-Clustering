@@ -37,7 +37,9 @@ public class PlotProcessor {
 		ArrayList<Point> centroids = new ArrayList<Point>(); 				// Create an arrayList to store centroids (used to not repeat centroids)
 		ArrayList<Point> coords = new ArrayList<Point>(plot.getCoords()); 	// Make a copy of our plot coordinates
 		
-		// PART 1: Create Clusters by randomly selecting centroids from plot coordinates
+		/*
+		 * PART 1: Create Clusters by randomly selecting centroids from plot coordinates
+		 */
 		// create first centroid and push it
 		int randomIdx = (int) Math.floor(Math.random() * coords.size());
 		Point firstCentroid = coords.get(randomIdx);
@@ -85,7 +87,9 @@ public class PlotProcessor {
 		resultsLog.add(initialCentroidMsg);
 		System.out.println(initialCentroidMsg);
 		
-		// PART 2: Add other coordinates to clusters based on minimum distance
+		/*
+		 *  PART 2: Add other coordinates to clusters based on minimum distance
+		 */
 		// iterate through all of our coords.  For each coord...
 		for(Point coord: coords){
 			// tuple used to store [minDistance, indexOfClusterWithMinDistance]
@@ -110,6 +114,12 @@ public class PlotProcessor {
 		}
 		resultsLog.add(iteration1Msg);
 		System.out.println(iteration1Msg);
+		
+		/*
+		 * PART 3: Iterate n number of times across our clusters(stored in the clusters arraylist) to fine-tune our clusters
+		 */
+		
+		
 		
 		// RETURN CLUSTERS
 		return new ArrayList<Cluster>();
