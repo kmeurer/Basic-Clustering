@@ -75,7 +75,23 @@ public class Cluster {
 	}
 	
 	public double getMaxIntraClusterDistance(){
-		return 1.0;
+		double maxDist = 0;
+		double currentDist = 0; 	// allocate memory space for current distance
+		Point currentPoint; 		// allocate memory space for iteration current point to avoid recreating the variable
+		// compare each point to all the other points in our array, starting at i + 1, storing the maximum intra-cluster distance
+		for( int i = 0; i < clusterPoints.size() - 1; i++ ){
+			currentPoint = clusterPoints.get(i); // get current point
+			// compare each point to all the other points
+			for( int j = i + 1; j< clusterPoints.size(); j++ ){
+				// store distance between this point and the next
+				currentDist = currentPoint.distanceFrom(clusterPoints.get(j));
+				if(currentDist > maxDist){
+					maxDist = currentDist;
+				}
+			}
+		}
+		// return maximum distance
+		return maxDist;
 	}
 	
 	// Removes all points from a given cluster.  Leaves centroid the same(the defining characteristic of a centroid)

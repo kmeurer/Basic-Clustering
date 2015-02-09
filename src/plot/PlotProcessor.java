@@ -20,8 +20,10 @@ public class PlotProcessor {
 	}
 	
 	/* METHODS */
-	// K-MEANS CLUSTERING ALGORITHM
-	// Create Clusters
+	/*
+	 *  K-MEANS CLUSTERING ALGORITHM
+	 */
+	// Main Function: Create Clusters
 	public ArrayList<Cluster> createKMeansClusters(int numOfClusters, int numOfIterations) throws Exception{
 		// PART 0: Validate Parameters and declare necessary variables
 		if(numOfClusters > plot.getCoords().size()){
@@ -137,7 +139,7 @@ public class PlotProcessor {
 		/*
 		 * PART 4: Validate clusters using maximum intra-cluster distance method.  The logic for this is captured in a separate function
 		 */
-		getMaximumIntraClusterDistance(clusters);
+		validateClusters(clusters);
 		
 		// RETURN CLUSTERS
 		return new ArrayList<Cluster>();
@@ -167,9 +169,28 @@ public class PlotProcessor {
 	}
 	
 	// Calculates and outputs the maximum intra-cluster distance for a given cluster.
-	private double getMaximumIntraClusterDistance(ArrayList<Cluster> clusters){
+	private double validateClusters(ArrayList<Cluster> clusters){
+		double maxDistance = 0; 								// used to store max intracluster distance amongst all our clusters
+		String validationMsg = "Maximum intra-cluster distances: \n";	// create a message to output
+		// calculate maximum intra-cluster distance for each cluster, print it, and store them
+		for( int i = 0; i < clusters.size(); i++){
+			// calculate max distance
+			double dist = clusters.get(i).getMaxIntraClusterDistance();	// get maximum intra cluster distance
+			if( dist > maxDistance){
+				maxDistance = dist;										// update our max distance if this cluster has a greater max distance
+			}
+			// add result to validation message
+			validationMsg += "\tCluster " + (i + 1) + ": " + clusters.get(i).getCoordsAsString() + "\n\tMax Distance: " + dist + "\n\n";
+		}
 		
-		return 1.0;
+		// add result to our reporter
+		validationMsg += "Maximum intra-cluster distance amongst all clusters: " + maxDistance;
+		
+		// update our resultsLog and print
+		resultsLog.add(validationMsg);
+		System.out.println(validationMsg);
+		// return maximum intra-cluster distance
+		return maxDistance;
 	}
 	
 	

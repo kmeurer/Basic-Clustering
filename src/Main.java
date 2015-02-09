@@ -25,7 +25,7 @@ public class Main {
 		coords.add(p6);
 		Plot newPlot = new Plot(coords);
 		PlotProcessor processor1 = new PlotProcessor(newPlot);
-		processor1.createKMeansClusters(2, 9);
+		processor1.createKMeansClusters(3, 9);
 	}
 
 }

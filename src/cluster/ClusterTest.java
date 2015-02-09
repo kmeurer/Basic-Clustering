@@ -1,12 +1,13 @@
 package cluster;
 import static org.junit.Assert.*;
 
+// local imports
 import point.Point;
-
+// util imports
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
-
+// junit imports
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -19,9 +20,9 @@ public class ClusterTest {
 	@Parameters
     public static Collection<Object[]> getTestParameters() {
         return Arrays.asList(new Object[][] {     
-             { 10, 7, 1, 4, 10, 9, 11, 17, 10, 8, 9.25 }, 	// centroidX, centroidY, x2, y2, x3, y3, x4, y4, max-intra-distance, meanX, meanY
-             { 5, -2, 4, 1, 5, 17, 10, 16, 10, 6, 8 }, 	// centroidX, centroidY, x2, y2, x3, y3, x4, y4, max-intra-distance, meanX, meanY
-             { 57, 8, 3, 22, 16, 12, 14, 1, 10, 22.5, 10.75 }	// centroidX, centroidY, x2, y2, x3, y3, x4, y4, max-intra-distance, meanX, meanY
+             { 10, 7, 1, 4, 10, 9, 11, 17, 16.4, 8, 9.25 }, 	// centroidX, centroidY, x2, y2, x3, y3, x4, y4, max-intra-distance, meanX, meanY
+             { 5, -2, 4, 1, 5, 17, 10, 16, 19.0, 6, 8 }, 	// centroidX, centroidY, x2, y2, x3, y3, x4, y4, max-intra-distance, meanX, meanY
+             { 57, 8, 3, 22, 16, 12, 14, 1, 55.78, 22.5, 10.75 }	// centroidX, centroidY, x2, y2, x3, y3, x4, y4, max-intra-distance, meanX, meanY
        });
     }
 	
