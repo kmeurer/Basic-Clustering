@@ -33,6 +33,7 @@ public class PlotProcessor {
 		// write to results log and print starting statement.
 		String startingMsg = "\n\nK means cluster creation for plot: Creating " + numOfClusters + " clusters over " + numOfIterations + " iterations.";
 		resultsLog.add(startingMsg);
+		System.out.println(startingMsg);
 
 		
 		ArrayList<Cluster> clusters = new ArrayList<Cluster>();				// Create an arrayList to store our clusters
@@ -58,8 +59,14 @@ public class PlotProcessor {
 			// create bool to track if our chosen point is already taken
 			boolean centroidTaken = true;
 			
+			int count = 0; // used to handle exceptions related to infinite looping
+			
 			// While the selected centroid is taken, we test.  On first iteration. assume taken and test to be sure
 			while(centroidTaken){
+				count++; // increment count
+				if(count > coords.size() * 100){ // if we have gone through all options 100 times, statistically it would infinitely loop
+					throw new Exception("Not enough distinct centroids to complete clustering");
+				}
 				centroidTaken = false; // set bool to false so we can break if not taken
 				// iterate through our list of taken centroids to see if it matches new centroid
 				for(Point takenCentroid: centroids){
@@ -142,13 +149,13 @@ public class PlotProcessor {
 		validateClusters(clusters);
 		
 		// RETURN CLUSTERS
-		return new ArrayList<Cluster>();
+		return clusters;
 	}
 	
 	/*
 	 *  Assign a group of points to a group of clusters based on minimum distance.  Function takes an arraylist of Coordinates and an arraylist of clusters
 	 */
-	private void assignCoordsToNearestCluster(ArrayList<Point> coordinates, ArrayList<Cluster> clusters){
+	public void assignCoordsToNearestCluster(ArrayList<Point> coordinates, ArrayList<Cluster> clusters){
 		// for every coordinate, we compare the point to the centroid of each cluster
 		for(Point coord: coordinates){
 			// tuple used to store [minDistance, indexOfClusterWithMinDistance]
@@ -169,7 +176,7 @@ public class PlotProcessor {
 	}
 	
 	// Calculates and outputs the maximum intra-cluster distance for a given cluster.
-	private double validateClusters(ArrayList<Cluster> clusters){
+	public double validateClusters(ArrayList<Cluster> clusters){
 		double maxDistance = 0; 								// used to store max intracluster distance amongst all our clusters
 		String validationMsg = "Maximum intra-cluster distances: \n";	// create a message to output
 		// calculate maximum intra-cluster distance for each cluster, print it, and store them
@@ -199,5 +206,7 @@ public class PlotProcessor {
 		}
 	}
 	
-	
+	public void clearResultsLog(){
+		resultsLog.clear();
+	}
 }

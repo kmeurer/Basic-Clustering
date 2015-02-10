@@ -1,3 +1,7 @@
+/*
+ * PLOT CLASS:  Used to store groupings of points.  Each plot object has its own plot processor that can analyze its points.
+ */
+
 package plot;
 
 //import Point class
@@ -7,7 +11,7 @@ import java.util.ArrayList;
 
 public class Plot {
 	ArrayList<Point> coordinates; // used to store plot coordinates
-	PlotProcessor processor; // used to perform all analytics and log results
+	public PlotProcessor processor; // used to perform all analytics and log results
 	
 	public Plot() {
 		coordinates = new ArrayList<Point>();

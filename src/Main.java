@@ -21,7 +21,6 @@
 
 // IMPORTS
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -29,23 +28,23 @@ import java.util.ArrayList;
 
 import point.Point;
 import plot.Plot;
-import plot.PlotProcessor;
 
 // MAIN CLASS
 public class Main {
 	
 	private static ArrayList<Point> readPoints(String filePath){
-		ArrayList<Point> filePoints = new ArrayList<Point>();
+		ArrayList<Point> filePoints = new ArrayList<Point>();  // arraylist to store our points
 		try {
+			// create a file object
 			File file = new File(filePath);
-			BufferedReader reader = new BufferedReader(new FileReader (file));
+			BufferedReader reader = new BufferedReader(new FileReader (file)); // 
 			String line = null;
 			while ((line = reader.readLine()) != null) {
 				String[] vals = line.split(",");
 				Point newPoint = new Point(vals);
 				filePoints.add(newPoint);
-				newPoint.print();
 			}
+			
 			reader.close();
 
 		} catch (IOException e) {
@@ -57,9 +56,7 @@ public class Main {
 	public static void main(String[] args) throws Exception{
 		ArrayList<Point> coords = readPoints(args[0]);
 		Plot newPlot = new Plot(coords);
-		PlotProcessor processor1 = new PlotProcessor(newPlot);
-		processor1.createKMeansClusters(Integer.parseInt(args[1]), Integer.parseInt(args[2]));
-		processor1.printResultsLog();
+		newPlot.processor.createKMeansClusters(Integer.parseInt(args[1]), Integer.parseInt(args[2]));
 	}
 
 }
