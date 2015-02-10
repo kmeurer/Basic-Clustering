@@ -5,8 +5,8 @@ import java.lang.Math;
 public class Point {
 	/* PROPERTIES */
 	// You may be wondering why I decided to make these doubles.  I considered having them be ints, but we don't really know what this point class will be used for.  What if we need precision?  Then I'd be glad we used doubles
-	private double x; // x-value
-	private double y; // y-value
+	protected double x; // x-value
+	protected double y; // y-value
 	
 	/* CONSTRUCTORS */
 	// default constructor sets point to (0, 0)

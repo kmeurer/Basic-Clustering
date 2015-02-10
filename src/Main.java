@@ -15,15 +15,17 @@
  * maintain separation of concerns, and it made sense to me to store results in a distinct results log.  Our p;ot processor then gives us all the results
  * you'd expect from a program like this while storing a log of everything it does!
  * 
+ * Sources: Parameterized testing was pulled from the junit docs. All other material was pulled from the lecture notes and assignment description.
+ * 
  * Thank you for grading my project!
  */
-
 
 // IMPORTS
 import java.io.File;
 import java.io.FileReader;
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 import point.Point;
@@ -31,8 +33,9 @@ import plot.Plot;
 
 // MAIN CLASS
 public class Main {
-	
-	private static ArrayList<Point> readPoints(String filePath){
+	/* METHODS */
+	// method to read points from a file
+	public static ArrayList<Point> readPoints(String filePath) throws Exception{
 		ArrayList<Point> filePoints = new ArrayList<Point>();  // arraylist to store our points
 		try {
 			// create a file object
@@ -46,11 +49,15 @@ public class Main {
 			}
 			
 			reader.close();
-
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+			throw e;
 		} catch (IOException e) {
 			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
-		return filePoints;	
+		return filePoints;
 	}
 	
 	public static void main(String[] args) throws Exception{
