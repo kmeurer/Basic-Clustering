@@ -27,7 +27,7 @@ public class ClusterTest {
     }
 	
 	// Create a test cluster to be used for testing functionality
-	Cluster testCluster;
+	Cluster<Point> testCluster;
 	Point testCentroid;
 	Point p2;
 	Point p3;
@@ -52,7 +52,7 @@ public class ClusterTest {
 		coords.add(p3);
 		coords.add(p4);
 		maxIntraDist = maxIntraDistance;
-		testCluster = new Cluster(testCentroid);
+		testCluster = new Cluster<Point>(testCentroid);
 	}
 	
 	// Set Up before each
@@ -65,12 +65,9 @@ public class ClusterTest {
 	// Test constructors
 	@Test
 	public void constructorTests() {
-		// It should set centroid to 0, 0 if none specified
-		Cluster test1 = new Cluster();
-		assertTrue(test1.getCentroid().isEqual(new Point(0, 0)));
 		// It should set a centroid to a specified point if called in the constructor
 		Point testPoint = new Point(5, 7);
-		Cluster test2 = new Cluster(testPoint);
+		Cluster<Point> test2 = new Cluster<Point>(testPoint);
 		assertEquals(test2.getCentroid(), testPoint);
 	}
 	

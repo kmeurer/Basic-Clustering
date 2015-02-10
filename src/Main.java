@@ -49,15 +49,17 @@ public class Main {
 			}
 			
 			reader.close();
-		} catch (FileNotFoundException e) {
+		} catch (FileNotFoundException e) { // throw if file not found
 			e.printStackTrace();
 			throw e;
-		} catch (IOException e) {
+		} catch (IOException e) { 			// throw if error reading lines
 			e.printStackTrace();
-		} catch (Exception e) {
+			throw e;
+		} catch (Exception e) { 			// catch-all exceptiom
 			e.printStackTrace();
+			throw e;
 		}
-		return filePoints;
+		return filePoints; // return a list of our points
 	}
 	
 	public static void main(String[] args) throws Exception{

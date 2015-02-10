@@ -6,25 +6,17 @@ import point.Point;
 import java.util.ArrayList;
 
 // main cluster class.  Used to store all data for instantiated clusters
-public class Cluster {
+public class Cluster<T extends Point> {
 	/* PROPERTIES */
-	Point centroid; 					//Used to store centroid
-	ArrayList<Point> clusterPoints; 	// ArrayList to store points
+	T centroid;					//Used to store centroid
+	ArrayList<T> clusterPoints; 	// ArrayList to store points
 	
 	/* CONSTRUCTORS */
-	// default constructor
-	public Cluster() {
-		// Set centroid to (0, 0)
-		centroid = new Point(0, 0);
-		// Instantiate new ArrayList to store our points
-		clusterPoints = new ArrayList<Point>();
-		clusterPoints.add(centroid);
-	}
 	// primary constructor
-	public Cluster(Point startingCentroid){
+	public Cluster(T startingCentroid){
 		centroid = startingCentroid;
 		// Instantiate new ArrayList to store our points
-		clusterPoints = new ArrayList<Point>();
+		clusterPoints = new ArrayList<T>();
 		clusterPoints.add(centroid);
 	}
 	
@@ -35,26 +27,26 @@ public class Cluster {
 	}
 	
 	// Setter for centroid
-	public Point setCentroid(Point newCentroid){
+	public Point setCentroid(T newCentroid){
 		centroid = newCentroid;
 		return centroid;
 	}
 	
 	// getter for all coords
-	public ArrayList<Point> getCoords(){
+	public ArrayList<T> getCoords(){
 		return clusterPoints;
 	}
 	
 	// add a single point to the cluster
-	public void addPoint(Point pointToAdd){
+	public void addPoint(T pointToAdd){
 		// push new point to ArrayList
 		clusterPoints.add(pointToAdd);
 	}
 	
 	// add multiple points to the cluster
-	public void addPoints(ArrayList<Point> points){
+	public void addPoints(ArrayList<T> points){
 		// iterate through array list and add all points to the cluster
-		for(Point newPoint: points){
+		for(T newPoint: points){
 			clusterPoints.add(newPoint);
 		}
 	}
