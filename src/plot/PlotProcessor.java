@@ -114,10 +114,18 @@ public class PlotProcessor {
 		 * PART 3: Iterate n - 1 number of times across our clusters(stored in the clusters arraylist) to fine-tune our clusters
 		 * 			Here, we recalculate the centroid using the built in cluster function and reassign it as the centroid
 		 */
+		// create a clusterCopy so we can check for stabilization
+		boolean clusterStabilized = true;
 		for(int i = 1; i < numOfIterations; i++){
+			// set clusterStabilized as true
+			clusterStabilized = true;
+			
 			// FOR EACH CLUSTER: Calculate mean point, assign as centroid, clear other coords
 			for(Cluster cluster: clusters){
 				Point mean = cluster.getClusterMean();	// get cluster mean
+				if(mean.isEqual(cluster.getCentroid()) == false){ // if our new centroid is different than the old centroid, not stabilized yet
+					clusterStabilized = false;
+				}
 				cluster.setCentroid(mean);				// set centroid as mean of all points
 				cluster.clearClusterPoints();			// clear cluster points
 			}
@@ -137,6 +145,12 @@ public class PlotProcessor {
 			}
 			resultsLog.add(iterationNMsg);
 			System.out.println(iterationNMsg);
+			// if the cluster is stabilized, we print this and break the loop of iterations
+			if(clusterStabilized){
+				resultsLog.add("Cluster Stabilization Detected.  Terminating after " + (i + 1) + " iterations.\n");
+				System.out.println("Cluster Stabilization Detected.  Terminating after " + (i + 1) + " iterations.\n");
+				break;
+			}
 		}
 		
 		// Add to results log

@@ -12,8 +12,10 @@
  * Once it has the information, it instantiates a point object for each point, which is then fed to my plot class.  The plot class doesn't 
  * do much except store our points(it would conceivably be useful if we wanted to actually show the clusters to the user).  In any case, the plot
  * is passed as an argument to our plotProcessor, which creates and validates our clusters.  I separated the plot processor because I wanted to 
- * maintain separation of concerns, and it made sense to me to store results in a distinct results log.  Our p;ot processor then gives us all the results
+ * maintain separation of concerns, and it made sense to me to store results in a distinct results log.  Our plot processor then gives us all the results
  * you'd expect from a program like this while storing a log of everything it does!
+ * 
+ * In terms of fancy bells an whistles, I made my clustering algorithm automatically stop once the clusters have stabilized.
  * 
  * Sources: Parameterized testing was pulled from the junit docs. All other material was pulled from the lecture notes and assignment description.
  * 
