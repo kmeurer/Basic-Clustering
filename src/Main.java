@@ -1,31 +1,65 @@
+/*
+ * Project 1
+ * Name: Kevin Meurer
+ * E-Mail: kevin.a.meurer@gmail.com
+ * Instructor: Singh
+ * COSC 150
+ * 
+ * Honor Statement: In accordance with the class policies and Georgetown's Honor Code. I certify that, with the exceptions
+ * of the lecture notes and those items noted below, I have neither given nor received any assistance on this project
+ * 
+ * Description:  Welcome to my program!  You're looking at my main runner here.  This file processes the file inputs and parses them.
+ * Once it has the information, it instantiates a point object for each point, which is then fed to my plot class.  The plot class doesn't 
+ * do much except store our points(it would conceivably be useful if we wanted to actually show the clusters to the user).  In any case, the plot
+ * is passed as an argument to our plotProcessor, which creates and validates our clusters.  I separated the plot processor because I wanted to 
+ * maintain separation of concerns, and it made sense to me to store results in a distinct results log.  Our p;ot processor then gives us all the results
+ * you'd expect from a program like this while storing a log of everything it does!
+ * 
+ * Thank you for grading my project!
+ */
+
+
 // IMPORTS
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.BufferedReader;
+import java.io.IOException;
 import java.util.ArrayList;
 
-import cluster.Cluster;
 import point.Point;
 import plot.Plot;
 import plot.PlotProcessor;
 
 // MAIN CLASS
 public class Main {
+	
+	private static ArrayList<Point> readPoints(String filePath){
+		ArrayList<Point> filePoints = new ArrayList<Point>();
+		try {
+			File file = new File(filePath);
+			BufferedReader reader = new BufferedReader(new FileReader (file));
+			String line = null;
+			while ((line = reader.readLine()) != null) {
+				String[] vals = line.split(",");
+				Point newPoint = new Point(vals);
+				filePoints.add(newPoint);
+				newPoint.print();
+			}
+			reader.close();
 
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return filePoints;	
+	}
+	
 	public static void main(String[] args) throws Exception{
-		Point p1 = new Point(1, 2);
-		Point p2 = new Point(4, 1);
-		Point p3 = new Point(2, 5);
-		Point p4 = new Point(6, 2);
-		Point p5 = new Point(1, 7);
-		Point p6 = new Point(14, 8);
-		ArrayList<Point> coords = new ArrayList<Point>();
-		coords.add(p1);
-		coords.add(p2);
-		coords.add(p3);
-		coords.add(p4);
-		coords.add(p5);
-		coords.add(p6);
+		ArrayList<Point> coords = readPoints(args[0]);
 		Plot newPlot = new Plot(coords);
 		PlotProcessor processor1 = new PlotProcessor(newPlot);
-		processor1.createKMeansClusters(3, 9);
+		processor1.createKMeansClusters(Integer.parseInt(args[1]), Integer.parseInt(args[2]));
+		processor1.printResultsLog();
 	}
 
 }

@@ -28,6 +28,11 @@ public class Point {
 		y = yVal;
 	}
 	
+	public Point(String[] vals){
+		x = Double.parseDouble(vals[0]);
+		y = Double.parseDouble(vals[1]);
+	}
+	
 	/* CLASS METHODS */
 	// Print coord
 	public void print(){

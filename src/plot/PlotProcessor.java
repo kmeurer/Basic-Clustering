@@ -33,7 +33,7 @@ public class PlotProcessor {
 		// write to results log and print starting statement.
 		String startingMsg = "\n\nK means cluster creation for plot: Creating " + numOfClusters + " clusters over " + numOfIterations + " iterations.";
 		resultsLog.add(startingMsg);
-		System.out.println(startingMsg);
+
 		
 		ArrayList<Cluster> clusters = new ArrayList<Cluster>();				// Create an arrayList to store our clusters
 		ArrayList<Point> centroids = new ArrayList<Point>(); 				// Create an arrayList to store centroids (used to not repeat centroids)
@@ -191,6 +191,12 @@ public class PlotProcessor {
 		System.out.println(validationMsg);
 		// return maximum intra-cluster distance
 		return maxDistance;
+	}
+	
+	public void printResultsLog(){
+		for(String result: resultsLog){
+			System.out.println(result);
+		}
 	}
 	
 	
