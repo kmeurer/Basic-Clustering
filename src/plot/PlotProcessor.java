@@ -1,3 +1,8 @@
+/*
+ * PLOT PROCESSOR:  Runs all forms of analysis on our plot.  Takes a plot in its constructor and stores the plot's coordinates.
+ * The primary function here is the createKMeansClusters function, which executes our algorithm
+ */
+
 package plot;
 
 import java.util.ArrayList;
@@ -7,14 +12,14 @@ import java.lang.Math;
 
 public class PlotProcessor {
 	/* PROPERTIES */
-	private Plot plot;
+	private ArrayList<Point> plotCoords;
 	private ArrayList<String> resultsLog;
 	
 	/* CONSTRUCTOR(S) */
 	// constructor takes a single plot and includes an overview in the results log
 	public PlotProcessor(Plot unprocessedPlot) {
 		// define our plot
-		plot = unprocessedPlot;
+		plotCoords = unprocessedPlot.getCoords();
 		// create a results log that will allow us to reference prior tests. Useful if we wanted to run algorithm multiple times and output/compare results
 		resultsLog = new ArrayList<String>();
 	}
@@ -26,7 +31,7 @@ public class PlotProcessor {
 	// Main Function: Create Clusters
 	public ArrayList<Cluster> createKMeansClusters(int numOfClusters, int numOfIterations) throws Exception{
 		// PART 0: Validate Parameters and declare necessary variables
-		if(numOfClusters > plot.getCoords().size()){
+		if(numOfClusters > plotCoords.size()){
 			throw new Exception("You have not supplied enough coordinates to create that many clusters.");
 		}
 		
@@ -38,7 +43,7 @@ public class PlotProcessor {
 		
 		ArrayList<Cluster> clusters = new ArrayList<Cluster>();				// Create an arrayList to store our clusters
 		ArrayList<Point> centroids = new ArrayList<Point>(); 				// Create an arrayList to store centroids (used to not repeat centroids)
-		ArrayList<Point> coords = new ArrayList<Point>(plot.getCoords()); 	// Make a copy of our plot coordinates
+		ArrayList<Point> coords = new ArrayList<Point>(plotCoords); 	// Make a copy of our plot coordinates
 		
 		/*
 		 * PART 1: Create Clusters by randomly selecting centroids from plot coordinates
@@ -131,7 +136,7 @@ public class PlotProcessor {
 			}
 			
 			// assign all of our coordinates to our clusters (because it is all of them, we use the coords directly from the plot)
-			assignCoordsToNearestCluster(plot.getCoords(), clusters);
+			assignCoordsToNearestCluster(plotCoords, clusters);
 			
 			// Add to report log and print results of each iteration
 			// Add reporting to the results Log
@@ -214,12 +219,14 @@ public class PlotProcessor {
 		return maxDistance;
 	}
 	
+	// Prints results log.  Useful if we wanted to create clusters multiple times and store the results
 	public void printResultsLog(){
 		for(String result: resultsLog){
 			System.out.println(result);
 		}
 	}
 	
+	// clear the results log
 	public void clearResultsLog(){
 		resultsLog.clear();
 	}

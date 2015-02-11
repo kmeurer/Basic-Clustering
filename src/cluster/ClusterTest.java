@@ -39,14 +39,14 @@ public class ClusterTest {
 	
 	// Test Constructor: assigns parameters to variables
 	public ClusterTest(double centroidX, double centroidY, double x2, double y2, double x3, double y3, double x4, double y4, double maxIntraDistance, double Xmean, double Ymean){
-		meanX = Xmean;
-		meanY = Ymean;
-		testCentroid = new Point(centroidX, centroidY);
+		meanX = Xmean; // avg x
+		meanY = Ymean; // avg y
+		testCentroid = new Point(centroidX, centroidY); // create a centroid for our test cluster
 		p2 = new Point(x2, y2);
 		p3 = new Point(x3, y3);
 		p4 = new Point(x4, y4);
 		// store our coords
-		coords = new ArrayList<Point>();
+		coords = new ArrayList<Point>(); // array list to feed constructor
 		coords.add(testCentroid);
 		coords.add(p2);
 		coords.add(p3);

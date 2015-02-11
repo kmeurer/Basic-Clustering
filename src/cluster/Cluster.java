@@ -1,3 +1,8 @@
+/*
+ * MAIN CLUSTER CLASS:  The cluster class stores a centroid and group of points for a given cluster.  It does not handle logic related to clustering,
+ * though it does provide functionality to find the mean of a given cluster or calculate maximum intra-cluster distance.
+ */
+
 // declare package name
 package cluster;
 
@@ -66,6 +71,7 @@ public class Cluster {
 		return mean;
 	}
 	
+	// returns the maximum intraCluster distance
 	public double getMaxIntraClusterDistance(){
 		double maxDist = 0;
 		double currentDist = 0; 	// allocate memory space for current distance
@@ -86,7 +92,7 @@ public class Cluster {
 		return maxDist;
 	}
 	
-	// Removes all points from a given cluster.  Leaves centroid the same(the defining characteristic of a centroid)
+	// Removes all points from a given cluster.  Leaves centroid the same(the defining characteristic of a cluster)
 	public void clearClusterPoints(){
 		// Clear our cluster points
 		clusterPoints.clear();

@@ -1,3 +1,5 @@
+// Our plot does not contain much functionality, so these tests are fairly short
+
 package plot;
 
 import static org.junit.Assert.*;
@@ -21,7 +23,7 @@ public class PlotTest {
 		coords.add(new Point(5, 3));
 		testPlot = new Plot(coords);
 	}
-
+	
 	@Test
 	public void gettersTest() {
 		assertEquals(coords, testPlot.getCoords());

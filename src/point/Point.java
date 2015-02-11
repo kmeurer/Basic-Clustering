@@ -1,10 +1,13 @@
+/*
+ * POINT CLASS:  Stores two dimensional points.  Also useful for calculating euclidian distance between points
+ */
 package point;
 
 import java.lang.Math;
 
 public class Point {
 	/* PROPERTIES */
-	// You may be wondering why I decided to make these doubles.  I considered having them be ints, but we don't really know what this point class will be used for.  What if we need precision?  Then I'd be glad we used doubles
+	// using doubles for precision.  Made them protected in case we wanted to inherit
 	protected double x; // x-value
 	protected double y; // y-value
 	
